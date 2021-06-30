@@ -4,33 +4,36 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../Form/Input';
 import Button from '../Form/Button';
+import useForm from '../../Hooks/useForm';
+import { TOKEN_POST, USER_GET } from '../../api';
 
 export const LoginForm = () => {
-  // const [username, setUsername] = useState('');
-  // const [password, setPassword] = useState('');
+  const username = useForm();
+  const password = useForm();
 
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({ username, password }),
-  //   }).then((response) => {
-  //     console.log(response);
-  //     return response.json();
-  //   }).then((json) => {
-  //     console.log(json);
-  //   });
-  // }
+  async function getUser(token) {
+    const { url, options } = USER_GET(token);
+    const response = await fetch(url, options);
+    const json = await response.json();
+    console.log(json);
+  }
 
+  async function handleSubmit(event) {
+    event.preventDefault();
+    if (username.validade() && password.validade()) {
+      const { url, options } = TOKEN_POST({ username: username.value, password: password.value });
+      const response = await fetch(url, options);
+      const json = await response.json();
+      window.localStorage.setItem('token', json.token);
+      getUser(json.token);
+    }
+  }
   return (
     <section className="login-form">
       <h1>Login</h1>
-      <form action="">
-        <Input label="Usuário" type="text" name="username" />
-        <Input label="Senha" type="password" name="password" />
+      <form action="" onSubmit={handleSubmit}>
+        <Input label="Usuário" type="text" name="username" {...username} />
+        <Input label="Senha" type="password" name="password" {...password} />
         <Button>Entrar</Button>
       </form>
       <Link to="/login/create">Create Account</Link>
