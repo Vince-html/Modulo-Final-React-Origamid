@@ -1,0 +1,32 @@
+{
+    
+    "env": {
+      "browser": true,
+      "jest": true
+    },
+    "plugins": ["react", "jsx-a11y", "import"],
+    "extends": "airbnb",
+    "rules": {
+      "react/jsx-filename-extension": [
+        "error",
+        {
+          "extensions": [".js", ".jsx"]
+        }
+      ],
+      "global-require": "off",
+      "import/prefer-default-export": "off",
+      "no-unused-expressions": ["error", { "allowTaggedTemplates": true }],
+      "react/react-in-jsx-scope": "off",
+      "linebreak-style": 0,
+      "react/prop-types":"off",
+      "arrow-body-style": ["error", "always"],
+      "import/no-unresolved": 0,
+      "react/button-has-type": 0,
+      
+      "react/jsx-props-no-spreading": ["error", {
+        "html": "ignore",
+        "custom": "ignore",
+        "exceptions": [""]
+      }]
+    }
+  }
