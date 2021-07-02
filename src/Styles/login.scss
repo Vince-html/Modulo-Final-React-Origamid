@@ -1,0 +1,34 @@
+.login-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  gap: 2rem;
+
+  &::before {
+    content: '';
+    display: block;
+    background: url('../Assets/login.jpg') no-repeat center center;
+    background-size: cover;
+  }
+
+  .login-acess {
+    max-width: 30rem;
+    padding: 1rem;
+  }
+}
+
+
+@media (max-width: 40rem){
+  .login-section {
+    grid-template-columns: 1fr;
+
+    &::before{
+      display: none;
+    }
+  }
+
+  .login-acess {
+    max-width: 100%;
+  }
+}
+

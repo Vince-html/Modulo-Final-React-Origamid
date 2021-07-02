@@ -1,43 +1,43 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../Form/Input';
 import Button from '../Form/Button';
+import Error from '../Helper/Error';
 import useForm from '../../Hooks/useForm';
-import { TOKEN_POST, USER_GET } from '../../api';
+import { UserContext } from '../../UserContext';
+import '../../Styles/loginform.scss';
 
 export const LoginForm = () => {
   const username = useForm();
   const password = useForm();
 
-  async function getUser(token) {
-    const { url, options } = USER_GET(token);
-    const response = await fetch(url, options);
-    const json = await response.json();
-    console.log(json);
-  }
+  const { userLogin, error, loading } = useContext(UserContext);
 
   async function handleSubmit(event) {
     event.preventDefault();
     if (username.validade() && password.validade()) {
-      const { url, options } = TOKEN_POST({ username: username.value, password: password.value });
-      const response = await fetch(url, options);
-      const json = await response.json();
-      window.localStorage.setItem('token', json.token);
-      getUser(json.token);
+      userLogin(username.value, password.value);
     }
   }
   return (
-    <section className="login-form">
-      <h1>Login</h1>
-      <form action="" onSubmit={handleSubmit}>
+    <section className="login-form animeLeft">
+      <h1 className="title-geral">Login</h1>
+      <form className="form" onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" {...username} />
         <Input label="Senha" type="password" name="password" {...password} />
-        <Button>Entrar</Button>
+        {loading ? <Button disabled>Carregando...</Button> : <Button>Entrar</Button>}
+        <Error error={error} />
+
       </form>
-      <Link to="/login/create">Create Account</Link>
-      <Link to="/login/reset">Reset Account</Link>
+      <Link className="reset-account" to="/login/reset">Perdeu a senha?</Link>
+
+      <div className="create-account">
+        <h2>Cadastre-se</h2>
+        <p>Ainda não possui conta? Cadastre-se no site.</p>
+        <Link className="btn-create" to="/login/create">Cadastro</Link>
+      </div>
     </section>
   );
 };
