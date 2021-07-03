@@ -6,12 +6,16 @@
     "feedphotositem",
     "lenght",
     "linebreak",
+    "photocomments",
+    "photocommentsform",
     "photocontent",
+    "photodelete",
     "readonly",
     "resetar",
     "style",
     "userheader",
     "userpost",
-    "userroute"
+    "userroute",
+    "visualizacoes"
   ]
 }

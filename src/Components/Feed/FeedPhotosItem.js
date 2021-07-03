@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import '../../Styles/feedphotositem.scss';
+import Image from '../Helper/Image';
 
 const FeedPhotosItem = ({ photo, setModalPhoto }) => {
   function handleClick() {
@@ -9,7 +10,7 @@ const FeedPhotosItem = ({ photo, setModalPhoto }) => {
   }
   return (
     <li className="photo-li">
-      <img src={photo.src} alt={photo.title} onClick={handleClick} />
+      <Image src={photo.src} alt={photo.title} onClick={handleClick} />
       <span className="photo-span">{photo.acessos}</span>
     </li>
   );

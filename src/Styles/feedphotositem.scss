@@ -18,16 +18,14 @@
   overflow: hidden;
   cursor: pointer;
 
-  img { 
+ 
+  > div { 
     grid-area: 1 / 1;
-  }
-
-  
-  
+  }  
    
    
 }
-
+ 
 
 .photo-span {
   grid-area: 1 / 1;
