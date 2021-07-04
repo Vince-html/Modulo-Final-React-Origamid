@@ -14,11 +14,17 @@ export const RoutesUser = ({ match }) => {
 
   return (
 
-    <section className="user-route-section">
+    <section className="user-route-section container mainContainer">
 
       <UserHeader />
       <Switch>
-        <Route path={match.url} exact render={() => { return (<Feed user={data.id} />); }} />
+        <Route
+          path={match.url}
+          exact
+          render={() => {
+            return (<Feed user={data ? data.id : null} />);
+          }}
+        />
         <Route path={`${match.url}/postar`} exact component={UserPhotoPost} />
         <Route path={`${match.url}/estatisticas`} exact component={UserStats} />
       </Switch>

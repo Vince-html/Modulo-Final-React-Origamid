@@ -1,6 +1,7 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-shadow */
 import React, { useEffect, useState } from 'react';
+
 import FeedModal from './FeedModal';
 import FeedPhotos from './FeedPhotos';
 
@@ -34,7 +35,7 @@ const Feed = ({ user }) => {
   }, [infinite]);
 
   return (
-    <div>
+    <>
       {modalPhoto && <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />}
       {pages.map((page) => {
         return (
@@ -48,7 +49,7 @@ const Feed = ({ user }) => {
         );
       })}
 
-    </div>
+    </>
   );
 };
 

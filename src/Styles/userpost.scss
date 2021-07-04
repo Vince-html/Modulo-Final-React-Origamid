@@ -10,6 +10,13 @@
   }
 }
 
+@media (max-width: 40rem){
+  .photo-post {
+    grid-template-columns: 1fr;
+  }
+
+}
+
 .img-preview {
   border-radius: 1rem;
   background-size: cover;

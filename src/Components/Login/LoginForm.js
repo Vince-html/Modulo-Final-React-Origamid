@@ -28,7 +28,7 @@ export const LoginForm = () => {
         <Input label="Usuário" type="text" name="username" {...username} />
         <Input label="Senha" type="password" name="password" {...password} />
         {loading ? <Button disabled>Carregando...</Button> : <Button>Entrar</Button>}
-        <Error error={error} />
+        <Error error={error && 'Dados incorretos.'} />
 
       </form>
       <Link className="reset-account" to="/login/reset">Perdeu a senha?</Link>

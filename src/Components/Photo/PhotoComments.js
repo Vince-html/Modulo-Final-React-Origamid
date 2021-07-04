@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/destructuring-assignment */
 import React, {
   useContext, useState, useRef, useEffect,
 } from 'react';
@@ -7,8 +5,8 @@ import { UserContext } from '../../UserContext';
 import PhotoCommentsForm from './PhotoCommentsForm';
 import '../../Styles/photocomments.scss';
 
-const PhotoComments = (props) => {
-  const [comments, setComments] = useState(() => { return props.comments; });
+const PhotoComments = ({ comments, single, id }) => {
+  const [comentarios, setComments] = useState(() => { return comments; });
   const commentsSection = useRef(null);
   const { login } = useContext(UserContext);
 
@@ -18,8 +16,8 @@ const PhotoComments = (props) => {
 
   return (
     <>
-      <ul ref={commentsSection} className="comments">
-        {comments.map((comment) => {
+      <ul ref={commentsSection} className={`comments ${single ? 'photo-single' : ''}`}>
+        {comentarios.map((comment) => {
           return (
             <li id="comments-li" key={comment.comment_ID}>
               <b>
@@ -31,7 +29,7 @@ const PhotoComments = (props) => {
           );
         })}
       </ul>
-      {login && <PhotoCommentsForm id={props.id} setComments={setComments} />}
+      {login && <PhotoCommentsForm id={id} single={single} setComments={setComments} />}
     </>
   );
 };

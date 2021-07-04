@@ -46,6 +46,7 @@ a {
 }
 
 .mainContainer {
+
   margin-top: 4rem;
 }
 
@@ -87,4 +88,14 @@ a {
 .error-geral {
   color: #f31;
   margin: 1rem 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh + 10rem);
+}
+
+.app-body {
+  flex:1;
 }

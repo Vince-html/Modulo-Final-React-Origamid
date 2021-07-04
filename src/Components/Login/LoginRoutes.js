@@ -17,7 +17,7 @@ const LoginRoutes = ({ match }) => {
       <div className="login-acess">
         <Route path={match.url} exact component={LoginForm} />
         <Route path={`${match.url}/create`} exact component={LoginCreate} />
-        <Route path={`${match.url}/redefinir`} exact component={RedefinedAccount} />
+        <Route path={`${match.url}/perdeu`} exact component={RedefinedAccount} />
         <Route path={`${match.url}/reset`} exact component={ResetAccount} />
       </div>
     </section>

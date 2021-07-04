@@ -6,8 +6,8 @@
   display: grid;
   grid-template-columns: 36rem 20rem;
   grid-template-rows: auto 1fr auto;
-  overflow: hidden;
   opacity: 0;
+  overflow: hidden;
   transform: scale(0.8);
   animation: scaleUp 0.1s forwards;
 
@@ -22,6 +22,35 @@
 
   
   }
+}
+
+.photo-single.photo-content {
+  grid-template-columns: 1fr;
+  height: auto;
+
+  .author {
+    opacity: 0.5;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+.photo-details {
+  padding: 1rem 0px 0px 0px;
+}
+
+
+  }
+  .photo-details {
+    padding: 1rem;
+  }
+
+  .img {
+    grid-row: 1;
+    border-radius: 0.4rem;
+    overflow: hidden;
+  }
+
 }
 
 .author a:hover{

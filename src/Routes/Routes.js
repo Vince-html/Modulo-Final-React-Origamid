@@ -8,24 +8,32 @@ import { UserStorage } from '../UserContext';
 import LoginRoutes from '../Components/Login/LoginRoutes';
 import ProtectedRoute from '../Components/Helper/ProtectedRoute';
 import { RoutesUser } from '../Components/User/RoutesUser';
+import { Photo } from '../Components/Photo/Photo';
+import UserProfile from '../Components/User/UserProfile';
+import NotFound from '../Components/Helper/NotFound';
 
 const Routes = () => {
   return (
-    <BrowserRouter>
-      <UserStorage>
-        <Header />
-        <Switch>
-          <div className="container">
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/login" component={LoginRoutes} />
-            <ProtectedRoute path="/conta" component={RoutesUser} />
-          </div>
-        </Switch>
-        <Footer />
-      </UserStorage>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <UserStorage>
+          <Header />
+          <main className="app-body">
+            <Switch>
+              <Route path="/" exact>
+                <Home className="container" />
+              </Route>
+              <Route path="/login" component={LoginRoutes} />
+              <Route path="/foto/:id" component={Photo} />
+              <Route path="/perfil/:user" component={UserProfile} />
+              <ProtectedRoute path="/conta" component={RoutesUser} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </main>
+          <Footer />
+        </UserStorage>
+      </BrowserRouter>
+    </div>
   );
 };
 
